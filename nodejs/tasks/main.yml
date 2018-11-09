@@ -1,0 +1,17 @@
+---
+# tasks file for nodejs
+- name: create hello directory
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - ~/apps/nodejs/hello
+
+- name: copy files
+  copy:
+    src: "{{item}}"
+    dest: ~/apps/nodejs/hello
+  with_items:
+    - Dockerfile
+    - index.js
+    - package.json

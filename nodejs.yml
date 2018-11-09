@@ -1,0 +1,4 @@
+---
+- hosts: umate.xyz
+  roles:
+    - nodejs

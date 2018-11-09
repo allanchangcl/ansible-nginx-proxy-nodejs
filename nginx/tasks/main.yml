@@ -1,0 +1,24 @@
+---
+# tasks file for nginx
+- name: Create a network
+  docker_network:
+    name: nginx-proxy
+
+- name: create nginx directories
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - ~/servers/nginx
+    - ~/servers/nginx/files
+    - ~/servers/nginx/config
+
+- name: nginx docker compose file
+  copy:
+    src: nginx.yml
+    dest: ~/servers/nginx
+
+- name: nginx template file
+  copy:
+    src: nginx.tmpl
+    dest: ~/servers/nginx
